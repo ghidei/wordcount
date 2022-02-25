@@ -1,0 +1,17 @@
+.idea/
+target
+*.class
+bin/
+/db
+/project/target
+.DS_Store
+/build.properties
+/deploy.properties
+/builder.cid
+/project/metals.sbt
+.metals/
+.bloop/
+.hydra/
+/.bsp
+.vscode/
+/project/project
