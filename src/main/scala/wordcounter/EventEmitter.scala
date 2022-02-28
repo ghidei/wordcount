@@ -18,7 +18,7 @@ object EventEmitter {
     Gen.elements("CREDIT_TRANSFER", "WIRE_TRANSFER", "CARD_CAPTURE", "DIRECT_DEBIT").map(EventType.apply)
 
   private val genData =
-    Gen.elements("transaction", "payment", "debt", "payout", "payout", "direct payment", "fast transfer")
+    Gen.elements("transaction", "payment", "debt", "payout", "direct payment", "fast transfer")
 
   private val genEvent =
     for {

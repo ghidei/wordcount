@@ -3,9 +3,9 @@ package wordcounter
 import wordcounter.types._
 import zhttp.service.Server
 import zio._
-import zio.concurrent.ConcurrentMap
 import zio.duration._
 import zio.stream._
+import zio.stm._
 
 object Main extends App {
 
@@ -13,7 +13,7 @@ object Main extends App {
 
   val program: ZIO[ZEnv, Nothing, ExitCode] =
     for {
-      wordMap  <- ConcurrentMap.empty[Word, ConcurrentMap[EventType, WordData]]
+      wordMap  <- TMap.empty[Word, TMap[EventType, WordData]].commit
       server    = Server.start(8080, WordCount.server(wordMap))
       now      <- clock.instant
       _        <- console.putStrLn(s"Writing events to file...").ignore
